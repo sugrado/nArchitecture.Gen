@@ -5,7 +5,7 @@ using AutoMapper;
 using Domain.Entities;{{ if is_secured_operation_used }}
 using Core.Application.Pipelines.Authorization;{{ end }}
 using MediatR;{{ if is_secured_operation_used }}
-using static Application.Features.{{ entity.name | string.pascalcase | string.plural }}.Constants.{{ entity.name | string.pascalcase | string.plural }}OperationClaims;{{ end }}
+using static Domain.Constants.GeneralOperationClaims;{{ end }}
 
 namespace Application.Features.{{ entity.name | string.pascalcase | string.plural }}.Queries.GetById;
 
@@ -13,7 +13,7 @@ public class GetById{{ entity.name | string.pascalcase }}Query : IRequest<GetByI
 {
     public {{ entity.id_type }} Id { get; set; }{{ if is_secured_operation_used }}
 
-    public string[] Roles => new[] { Admin, Read };{{ end }}
+    public string[] Roles => new[] { Admin };{{ end }}
 
     public class GetById{{ entity.name | string.pascalcase }}QueryHandler : IRequestHandler<GetById{{ entity.name | string.pascalcase }}Query, GetById{{ entity.name | string.pascalcase }}Response>
     {
