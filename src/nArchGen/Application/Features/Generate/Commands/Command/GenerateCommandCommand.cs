@@ -51,13 +51,13 @@ public class GenerateCommandCommand : IStreamRequest<GeneratedCommandResponse>
             newFilePaths.AddRange(
                 await generateApplicationCodes(request.ProjectPath, request.CommandTemplateData)
             );
-            updatedFilePaths.AddRange(
-                await injectOperationClaims(
-                    request.ProjectPath,
-                    request.FeatureName,
-                    request.CommandTemplateData
-                )
-            );
+            //updatedFilePaths.AddRange(
+            //    await injectOperationClaims(
+            //        request.ProjectPath,
+            //        request.FeatureName,
+            //        request.CommandTemplateData
+            //    )
+            //);
             response.LastOperationMessage = "Application layer codes have been generated.";
 
             response.CurrentStatusMessage = "Adding endpoint to WebAPI...";

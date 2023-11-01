@@ -61,15 +61,15 @@ public class GenerateCrudCommand : IStreamRequest<GeneratedCrudResponse>
             );
             response.LastOperationMessage = "Persistence layer codes have been generated.";
 
-            response.CurrentStatusMessage = "Adding feature operation claims as seed...";
-            yield return response;
-            string? addedOperationClaim = await injectFeatureOperationClaims(
-                request.ProjectPath,
-                request.CrudTemplateData
-            );
-            if (addedOperationClaim != null)
-                updatedFilePaths.Add(addedOperationClaim);
-            response.LastOperationMessage = "Feature operation claims have been added.";
+            //response.CurrentStatusMessage = "Adding feature operation claims as seed...";
+            //yield return response;
+            //string? addedOperationClaim = await injectFeatureOperationClaims(
+            //    request.ProjectPath,
+            //    request.CrudTemplateData
+            //);
+            //if (addedOperationClaim != null)
+            //    updatedFilePaths.Add(addedOperationClaim);
+            //response.LastOperationMessage = "Feature operation claims have been added.";
 
             response.CurrentStatusMessage = "Generating Application layer codes...";
             yield return response;
@@ -169,7 +169,7 @@ public class GenerateCrudCommand : IStreamRequest<GeneratedCrudResponse>
 
             await CSharpCodeInjector.AddCodeLinesToMethodAsync(
                 operationClaimConfigurationFilePath,
-                methodName: "getSeeds",
+                methodName: "GetSeeds",
                 codeLines: seedCodeLines.ToArray()
             );
             return operationClaimConfigurationFilePath;
