@@ -6,6 +6,7 @@ using Application.Features.{{ entity.name | string.pascalcase | string.plural }}
 using Core.Application.Requests;
 using Core.Application.Responses;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Controllers.Common;
 
 namespace WebAPI.Controllers;
 
